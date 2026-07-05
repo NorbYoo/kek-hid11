@@ -15,15 +15,15 @@
     "seed": "node --no-deprecation --env-file=.env --import tsx src/seed/run.ts"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "^3.85.2",
-    "@payloadcms/db-sqlite": "latest",
-    "@payloadcms/next": "latest",
-    "@payloadcms/richtext-lexical": "latest",
+    "@payloadcms/db-postgres": "3.85.1",
+    "@payloadcms/db-sqlite": "3.85.1",
+    "@payloadcms/next": "3.85.1",
+    "@payloadcms/richtext-lexical": "3.85.1",
     "cross-env": "^7.0.3",
     "graphql": "^16.9.0",
     "lucide-react": "^1.17.0",
-    "next": "latest",
-    "payload": "latest",
+    "next": "15.3.3",
+    "payload": "3.85.1",
     "react": "latest",
     "react-dom": "latest",
     "sharp": "^0.33.5"
