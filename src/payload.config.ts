@@ -49,7 +49,6 @@ export default buildConfig({
   db: process.env.DATABASE_URI?.startsWith('postgresql')
     ? postgresAdapter({
         pool: { connectionString: process.env.DATABASE_URI },
-        migrationDir: path.resolve(dirname, 'migrations'),
       })
     : sqliteAdapter({ client: { url: process.env.DATABASE_URI || 'file:./kek-hid.db' } }),
   sharp,
