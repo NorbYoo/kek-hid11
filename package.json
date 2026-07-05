@@ -22,10 +22,10 @@
     "cross-env": "^7.0.3",
     "graphql": "^16.9.0",
     "lucide-react": "^1.17.0",
-    "next": "15.3.3",
+    "next": "16.2.10",
     "payload": "3.85.1",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
