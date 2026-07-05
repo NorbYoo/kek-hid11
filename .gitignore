@@ -1,0 +1,27 @@
+node_modules
+.next
+out
+build
+dist
+
+# Környezeti változók (TITKOK — soha ne kerüljön verziókezelőbe)
+.env
+.env*.local
+
+# Helyi SQLite adatbázis
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Feltöltött média (helyi)
+/media
+/public/media
+
+# Egyéb
+.DS_Store
+*.log
+.vercel
+
+# Local Netlify folder
+.netlify
