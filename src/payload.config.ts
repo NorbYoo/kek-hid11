@@ -1,6 +1,7 @@
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -46,6 +47,17 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  plugins: [
+    uploadthingStorage({
+      collections: { media: true },
+      alwaysInsertFields: true,
+      enabled: Boolean(process.env.UPLOADTHING_TOKEN),
+      options: {
+        token: process.env.UPLOADTHING_TOKEN,
+        acl: 'public-read',
+      },
+    }),
+  ],
   db: process.env.DATABASE_URI?.startsWith('postgresql')
     ? postgresAdapter({
         pool: { connectionString: process.env.DATABASE_URI },
