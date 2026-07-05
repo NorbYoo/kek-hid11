@@ -47,7 +47,10 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: process.env.DATABASE_URI?.startsWith('postgresql')
-    ? postgresAdapter({ pool: { connectionString: process.env.DATABASE_URI } })
+    ? postgresAdapter({
+        pool: { connectionString: process.env.DATABASE_URI },
+        migrationDir: path.resolve(dirname, 'migrations'),
+      })
     : sqliteAdapter({ client: { url: process.env.DATABASE_URI || 'file:./kek-hid.db' } }),
   sharp,
 })
