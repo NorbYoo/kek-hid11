@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { cn } from '@/lib/utils'
 
@@ -16,6 +17,9 @@ export function MobileNav({
   cta?: { label: string; href: string; show?: boolean }
 }) {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
@@ -39,8 +43,10 @@ export function MobileNav({
         <Menu className="h-6 w-6" aria-hidden="true" />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-50 bg-brand-navy/40" onClick={() => setOpen(false)}>
+      {mounted &&
+        open &&
+        createPortal(
+          <div className="fixed inset-0 z-[60] bg-brand-navy/50 backdrop-blur-sm" onClick={() => setOpen(false)}>
           <nav
             className="absolute right-0 top-0 flex h-full w-80 max-w-[85%] flex-col gap-1 bg-white p-6 shadow-xl"
             onClick={(e) => e.stopPropagation()}
@@ -78,8 +84,9 @@ export function MobileNav({
               </Link>
             )}
           </nav>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </div>
   )
 }

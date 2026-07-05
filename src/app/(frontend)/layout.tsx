@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="hu" className={inter.variable}>
-      <body>
+      <body className="flex min-h-screen flex-col">
         <a
           href="#fooldal-tartalom"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-white"
@@ -37,7 +37,7 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
           Ugrás a tartalomra
         </a>
         <Header />
-        <main id="fooldal-tartalom">{children}</main>
+        <main id="fooldal-tartalom" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
